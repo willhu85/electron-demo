@@ -40,6 +40,15 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      #search {
+        float: right;
+        padding: 0.5em;
+        min-width: 10em;
+        border-radius: 3em;
+        margin: 0 2em;
+        border: none;
+        outline: none;
+      }
     </style>
   </head>
   <body>
@@ -51,6 +60,7 @@
     </template>
     <div id="toolbar">
       <div id="current-folder"></div>
+      <input type="search" id="search" results="5" placeholder="Search" />
     </div>
     <div id="main-area"></div>
     <!-- You can also require other files to run in this process -->
