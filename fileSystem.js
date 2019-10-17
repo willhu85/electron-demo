@@ -3,6 +3,13 @@ const fs = require("fs"); // 文件系统
 const path = require("path"); // 路径系统
 const async = require("async"); // 异步操作库
 
+let shell;
+if (process.versions.electron) {
+  shell = require("electron").shell;
+} else {
+  shell = require("nw.gui").shell;
+}
+
 // 获取用户路径
 function getUserHomeFolder() {
   return osenv.home();
@@ -44,8 +51,14 @@ function inspectAndDescirbeFiles(folderPath, files, callback) {
     callback
   );
 }
+
+function openFile(filePath) {
+  shell.openItem(filePath);
+}
+
 module.exports = {
   getFilesInFolder,
   getUserHomeFolder,
-  inspectAndDescirbeFiles
+  inspectAndDescirbeFiles,
+  openFile
 };
